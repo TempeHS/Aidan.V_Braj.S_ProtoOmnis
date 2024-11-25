@@ -1,51 +1,15 @@
-
-#include "Ultrasonic.h"
 #include <Servo.h>
+Servo myservo;
+unsigned static int servoPin = 7;
+unsigned static int potpin = A2;
 
-Ultrasonic sensor(5);
-Servo myServo;
-
-#define servoPin 7
-static signed int potpin = A2;
-unsigned long previousMillis = 0;
-const unsigned long gateInterval = 0;
 
 void setup() {
-  
-  myServo.attach(servoPin);
-  myServo.write(180);
-
-  Serial.begin(9600);
-
+  myservo.attach(servoPin);
 }
 
 void loop() {
-
-  unsigned long currentMillis = millis();
-  int val = analogRead(potpin);  
-  Serial.println(sensor.distanceRead());
-  
-    if (sensor.distanceRead() <= 30) {    
-    myServo.write(0);
-    previousMillis = currentMillis;
-
-
-
-  } else {
-
-
-
-    if (currentMillis - previousMillis >= gateInterval) {
-
-      myServo.write(180);
-
-    }
-
-  }
-
-  //val = map(val, 0, 1023, 0, 180);
-  //myServo.write(val);
-  
-  //Serial.println(analogRead(potpin));
-
+  int val = analogRead(potpin);
+  val = map(val, 0, 1023, 180, 0);
+  myservo.write(val);
 }
