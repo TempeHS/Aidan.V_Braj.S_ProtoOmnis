@@ -5,6 +5,7 @@
 Ultrasonic sensor(5);
 Servo myServo;
 
+#define servoTwo 6
 #define servoPin 7
 static signed int potpin = A2;
 unsigned long previousMillis = 0;
@@ -43,9 +44,9 @@ void loop() {
 
   }
 
-  //val = map(val, 0, 1023, 0, 180);
-  //myServo.write(val);
+  val = map(val, 0, 1023, 0, 180);
+  myServo.write(val);
   
-  //Serial.println(analogRead(potpin));
+  Serial.println(analogRead(potpin));
 
 }
