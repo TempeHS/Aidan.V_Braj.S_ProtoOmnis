@@ -10,13 +10,6 @@ const int buzzer =  3;      // the number of the buzzer pin
 int buttonState = 0;         // variable for reading the pushbutton status
 
 
-void setup() {
-  myservo.attach(servoPin);
-  // initialize the LED pin as an output:
-  pinMode(buzzer, OUTPUT);
-  // initialize the pushbutton pin as an input:
-  pinMode(buttonPin, INPUT);
-}
 
 void loop() {
   int val = analogRead(potpin);
@@ -29,7 +22,7 @@ void loop() {
   if (buttonState == HIGH) {
     // turn LED on:
     digitalWrite(buzzer, LOW);
-  } else {
+  } else { 
     // turn LED off:
     digitalWrite(buzzer, HIGH);
   }
